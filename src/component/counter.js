@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import './counter.css'
 import { connect } from 'react-redux'
-import uuid from 'uuid'
-
 class counter extends Component {
 
     render() {
@@ -17,7 +15,7 @@ class counter extends Component {
                         <div className="button" onClick={this.props.onSubtractCounterEventHandler}>subtract counter:10</div>
                     </div>
                     <div className="">
-                        <div className="button" onClick={this.props.onSaveEventHandler}>save value</div>
+                        <div className="button" onClick={()=>this.props.onSaveEventHandler(this.props.counterValue)}>save value</div>
                     </div>
                 </div>
                 <hr/>
@@ -37,8 +35,8 @@ class counter extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        counterValue: state.counter,
-        results: state.results
+        counterValue: state.ctrReducer.counter,
+        results: state.resReducer.results
     }
 }
 
@@ -48,7 +46,7 @@ const mapPropsToAction = (dispatch) => {
         onDecreamentEventHandler: () => dispatch({ type: "DEACREAMENT" }),
         onAddCounterEventHandler: () => dispatch({ type: "ADD", value: 10 }),
         onSubtractCounterEventHandler: () => dispatch({ type: "SUBTRACT", value: 10 }),
-        onSaveEventHandler: () => dispatch({ type: "SAVE" }),
+        onSaveEventHandler: (counterValue) => dispatch({ type: "SAVE" ,counterValue:counterValue}),
         onDeleteEventHandler:(id)=>dispatch({type:"DEL_RES",id:id})
     }
 }
