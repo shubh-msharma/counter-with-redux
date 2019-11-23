@@ -1,4 +1,5 @@
 import uuid from 'uuid'
+import * as actionType from '../actions'
 
 const initState = {
     results: []
@@ -6,12 +7,12 @@ const initState = {
 
 const reducer = (state = initState, action) => {
     switch (action.type) {
-        case "SAVE":
+        case actionType.SAVE:
             return {
                 ...state,
                 results:state.results.concat({id:uuid(),value:action.counterValue})
             }
-        case "DEL_RES":
+        case actionType.DELETE:
             return{
                 ...state,
                 results:state.results.filter(res=>res.id !== action.id)

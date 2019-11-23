@@ -1,4 +1,5 @@
 import uuid from 'uuid'
+import * as actionType from '../actions'
 
 const initState = {
     counter: 0,
@@ -6,24 +7,24 @@ const initState = {
 
 const reducer = (state = initState, action) => {
     switch (action.type) {
-        case "INCREAMENT":
+        case actionType.INCREAMENT:
             return {
                 ...state,
                 counter: state.counter + 1
             }
-        case "DEACREAMENT":
+        case actionType.DECREAMENT:
             return {
                 ...state,
                 counter: state.counter - 1
             }
 
-        case "ADD":
+        case actionType.ADD:
             return {
                 ...state,
                 counter: state.counter + action.value
             }
 
-        case "SUBTRACT":
+        case actionType.SUBTRACT:
             return {
                 ...state,
                 counter: state.counter - action.value
