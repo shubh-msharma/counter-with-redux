@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
-import { createStore, combineReducers, applyMiddleware ,compose} from "redux";
+import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
-
+import thunk from 'redux-thunk'
 import CounterReducer from "./store/reducer/CounterReducer";
 import ResultReducer from "./store/reducer/ResultReducer";
 
@@ -18,7 +18,7 @@ function logger(store) {
         return function (action) {
             console.log(next)
             console.log(action);
-             next(action) 
+            next(action)
             // console.log(result)
             // return result;
         };
@@ -28,7 +28,7 @@ function logger(store) {
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger)));
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger,thunk)));
 
 ReactDOM.render(
     <Provider store={store}>

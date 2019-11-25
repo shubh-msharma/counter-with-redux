@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import './counter.css'
 import { connect } from 'react-redux'
-import * as actionType from '../store/actions'
-
+import * as actionCreators from '../store/actions/index'
 
 class counter extends Component {
 
@@ -45,12 +44,12 @@ const mapStateToProps = (state) => {
 
 const mapPropsToAction = (dispatch) => {
     return {
-        onIncreamentEventHandler: () => dispatch({ type: actionType.INCREAMENT }),
-        onDecreamentEventHandler: () => dispatch({ type: actionType.DECREAMENT }),
-        onAddCounterEventHandler: () => dispatch({ type: actionType.ADD, value: 10 }),
-        onSubtractCounterEventHandler: () => dispatch({ type: actionType.SUBTRACT, value: 10 }),
-        onSaveEventHandler: (counterValue) => dispatch({ type: actionType.SAVE ,counterValue:counterValue}),
-        onDeleteEventHandler:(id)=>dispatch({type:actionType.DELETE,id:id})
+        onIncreamentEventHandler: () => dispatch(actionCreators.Increament()),
+        onDecreamentEventHandler: () => dispatch(actionCreators.Decreament()),
+        onAddCounterEventHandler: () => dispatch(actionCreators.Add(10)),
+        onSubtractCounterEventHandler: () => dispatch(actionCreators.Subtract(10)),
+        onSaveEventHandler: (counterValue) => dispatch(actionCreators.Save(counterValue)),
+        onDeleteEventHandler:(id)=>dispatch(actionCreators.Delete(id))
     }
 }
 

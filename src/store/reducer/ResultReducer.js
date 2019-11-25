@@ -1,5 +1,5 @@
 import uuid from 'uuid'
-import * as actionType from '../actions'
+import * as actionType from '../actions/actionsTypes'
 
 const initState = {
     results: []
